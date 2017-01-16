@@ -14,10 +14,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -41,11 +44,17 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Set <Leader>
+let mapleader="\<Space>"
+
 " Press <return> after a search to remove the highlighting
 nnoremap <return> :noh<return><esc>
 
 " Allow CTRL-C to exit mode
 noremap <C-C> <Esc>
+
+" Easier command mode
+nnoremap ; :
 
 " Moves backup files to a separate directory
 set backupdir=~/.vimtmp
@@ -115,12 +124,18 @@ augroup resCur
     autocmd BufWinEnter * call ResCur()
 augroup END
 
+set undofile
+set undodir=/Users/melder/.vimundo
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Types
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " text
 autocmd FileType text setlocal spell
+
+" tex
+autocmd Filetype tex setlocal noautoindent
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commands
@@ -134,6 +149,10 @@ command Latex !pdflatex % && open %:r.pdf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vim-airline
+let g:airline_powerline_fonts = 1
 set laststatus=2
 
+" NERDCommenter
+
+let g:NERDSpaceDelims = 1
 
