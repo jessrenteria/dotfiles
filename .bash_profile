@@ -1,5 +1,4 @@
 alias ll='ls -l'
-alias text='open -a TextEdit'
 alias la='ls -a'
 alias ls='ls -G'
 alias a='archey -c'
